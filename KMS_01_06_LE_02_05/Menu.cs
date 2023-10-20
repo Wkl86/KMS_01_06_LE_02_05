@@ -1,41 +1,33 @@
 ﻿using KMS_01_06_LE_02_05;
 using System;
+using System.IO;
 
 namespace KMS_01_06_LE_02_04
 {
     public class Menu
     {
-        public static void Selects(double number1)
+        public static void Selects()
         {
             int select = 0;
             do
             {
-                Console.WriteLine("Grundrechnungsarten ( +, - , * , / ): (1): ");
-                Console.WriteLine("Modula: (2)");
-                Console.WriteLine("Berechnung x²: (3) ");
-                Console.WriteLine("Berechnung x³: (4) ");
-                Console.WriteLine("Berechnung sqrt²: (5) ");
-                Console.WriteLine("Berechnung Fakultät: (6) ");
-                Console.WriteLine("Berechnung Fläche eines Trapezes: (7) ");
-                Console.WriteLine("Berechnung Umfang eines Trapezes: (8) ");
-                Console.WriteLine("Berechung des Volumen einer Kugel: (9) ");
-                Console.WriteLine("Beenden des Programmes: (0) ");
-                try
-                {
+                try { 
+                    Console.WriteLine("Grundrechnungsarten ( +, - , * , / ): (1): ");
+                    Console.WriteLine("Modula: (2)");
+                    Console.WriteLine("Berechnung x²: (3) ");
+                    Console.WriteLine("Berechnung x³: (4) ");
+                    Console.WriteLine("Berechnung sqrt²: (5) ");
+                    Console.WriteLine("Berechnung Fakultät: (6) ");
+                    Console.WriteLine("Berechnung Fläche eines Trapezes: (7) ");
+                    Console.WriteLine("Berechnung Umfang eines Trapezes: (8) ");
+                    Console.WriteLine("Berechung des Volumen einer Kugel: (9) ");
+                    Console.WriteLine("Beenden des Programmes: (0) ");
                     select = Convert.ToInt32(Console.ReadLine());
-
-                }
-                catch (FormatException)
-                {
-                    Console.WriteLine("Ungültige Eingabe!");
-                    continue;
-                }
-
+                 
                 switch (select)
                 {
                     case 1:
                         DisplaySubMenu();
-
                         break;
 
                     case 2:
@@ -47,15 +39,15 @@ namespace KMS_01_06_LE_02_04
                         break;
                     case 3:
                         double basis = GetNumericInput("Geben Sie die Basis ein:");
-                        double resultPotenz2 = Calculations.Cubed2(basis);
+                        double resultCubed2 = Calculations.Cubed2(basis);
                         Console.WriteLine("Die Formel für eine Quadrierung lt. basis * basis");
-                        Console.WriteLine($"Das Ergebnis von {basis} * {basis} = {resultPotenz2}");
+                        Console.WriteLine($"Das Ergebnis von {basis} * {basis} = {resultCubed2}");
                         break;
                     case 4:
                         double basis1 = GetNumericInput("Geben Sie die Basis ein:");
-                        double resultPotenz3 = Calculations.Cubed3(basis1);
+                        double resultCubed3 = Calculations.Cubed3(basis1);
                         Console.WriteLine("Die Formel für eine Berechnung Basis hoch 3 lt. basis * basis * basis ");
-                        Console.WriteLine($"Das Ergebnis von {basis1} * {basis1} * {basis1} = {resultPotenz3}");
+                        Console.WriteLine($"Das Ergebnis von {basis1} * {basis1} * {basis1} = {resultCubed3}");
                         break;
                     case 5:
                         double radikand = GetNumericInput("Geben Sie den Radikand ein:");
@@ -64,7 +56,7 @@ namespace KMS_01_06_LE_02_04
                         Console.WriteLine($"Das Ergebnis von √ {radikand} = {resultSQRT}");
                         break;
                     case 6:
-                        int n = GetIntInput("Geben Sie für n eine Zahl ein: ");
+                        double n = GetNumericInput("Geben Sie für n eine Zahl ein: ");
                         double resultFactorial = Calculations.Factorial(n);
                         Console.WriteLine("Die Formel von der Falultät ! n = n! * ∑ k = O n(-1)k k!");
                         Console.WriteLine($"Das Ergebnis von  {n}! = {resultFactorial}");
@@ -101,109 +93,118 @@ namespace KMS_01_06_LE_02_04
                         continue;
                 }
 
+                }
+                catch (FormatException ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                }
+                catch (IOException ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                }
             } while (true);
         }
+
+
         public static void DisplaySubMenu()
         {
             int selectSubMenu = 0;
 
             do
             {
-                Console.WriteLine("Addition:  (1) ");
-                Console.WriteLine("Subraktion: (2) ");
-                Console.WriteLine("Multiplikation: (3) ");
-                Console.WriteLine("Division: (4): ");
-                Console.WriteLine("Hauptmenü: (0) ");
-
                 try
                 {
+                    Console.WriteLine("Addition:  (1) ");
+                    Console.WriteLine("Subtraktion: (2) ");
+                    Console.WriteLine("Multiplikation: (3) ");
+                    Console.WriteLine("Division: (4): ");
+                    Console.WriteLine("Hauptmenü: (0) ");
+
                     selectSubMenu = Convert.ToInt32(Console.ReadLine());
 
-                }
-                catch (FormatException)
-                {
-                    Console.WriteLine("Ungültige Eingabe!");
-                    continue;
-                }
-                switch (selectSubMenu)
-                {
-                    case 1:
-                        double summand1 = GetNumericInput("Geben Sie den Summanden ein:");
-                        double summand2 = GetNumericInput("Geben Sie den Summanden ein:");
-                        double resultAddition = Calculations.Addition(summand1, summand2);
-                        Console.WriteLine("Die Formel für eine Addition lt. summand1 + summand2");
-                        Console.WriteLine($"Das Ergebnis ist: {summand1} + {summand2} = {resultAddition}");
-                        break;
+                    switch (selectSubMenu)
+                    {
+                        case 1:
+                            double summand1 = GetNumericInput("Geben Sie den ersten Summanden ein:");
+                            double summand2 = GetNumericInput("Geben Sie den zweiten Summanden ein:");
+                            double resultAddition = Calculations.Addition(summand1, summand2);
+                            Console.WriteLine($"Die Formel für eine Addition ist: {summand1} + {summand2}");
+                            Console.WriteLine($"Das Ergebnis ist: {resultAddition}");
+                            break;
 
-                    case 2:
-                        double minuend = GetNumericInput("Geben Sie den Minunden ein:");
-                        double subtrahend = GetNumericInput("Geben Sie den Subtrahenden ein:");
-                        double resultSubraction = Calculations.Subraction(minuend, subtrahend);
-                        Console.WriteLine("Die Formel für eine Addition lt. minuend - subtrahend");
-                        Console.WriteLine($"Das Ergebnis ist: {minuend} - {subtrahend} = {resultSubraction}");
-                        break;
-                    case 3:
-                        double factor1 = GetNumericInput("Geben Sie den ersten Faktor ein:");
-                        double factor2 = GetNumericInput("Geben Sie den zweiten Faktor ein:");
-                        double resultMultipliaction = Calculations.Multiplication(factor1, factor2);
-                        Console.WriteLine("Die Formel für eine Multiplication lt. factor1 * factor2");
-                        Console.WriteLine($"Das Ergebnis ist: {factor1} * {factor2} = {resultMultipliaction}");
-                        break;
-                    case 4:
-                        double divisor = GetNumericInput("Geben Sie den Divisor ein, nicht 0!");
-                        double divident = GetNumericInput("Geben Sie den Dividenten ein:");
-                        double resultDivison = Calculations.Division(divisor, divident);
-                        Console.WriteLine("Die Formel für eine Multiplication lt. divisor / divident");
-                        Console.WriteLine($"Das Ergebnis ist: {divisor} / {divident} = {resultDivison}");
-                        break;
-                    case 0:
-                        Console.WriteLine("Zurück zum Hauptmenü");
-                        break;
-                    default:
-                        Console.WriteLine("Ungültige Eingabe!");
-                        continue;
+                        case 2:
+                            double minuend = GetNumericInput("Geben Sie den Minuend ein:");
+                            double subtrahend = GetNumericInput("Geben Sie den Subtrahend ein:");
+                            double resultSubtraction = Calculations.Subtraction(minuend, subtrahend);
+                            Console.WriteLine($"Die Formel für eine Subtraktion ist: {minuend} - {subtrahend}");
+                            Console.WriteLine($"Das Ergebnis ist: {resultSubtraction}");
+                            break;
+
+                        case 3:
+                            double factor1 = GetNumericInput("Geben Sie den ersten Faktor ein:");
+                            double factor2 = GetNumericInput("Geben Sie den zweiten Faktor ein:");
+                            double resultMultiplication = Calculations.Multiplication(factor1, factor2);
+                            Console.WriteLine($"Die Formel für eine Multiplikation ist: {factor1} * {factor2}");
+                            Console.WriteLine($"Das Ergebnis ist: {resultMultiplication}");
+                            break;
+
+                        case 4:
+                            double divisor = GetNumericInput("Geben Sie den Divisor ein (nicht 0):");
+                            double dividend = GetNumericInput("Geben Sie den Dividend ein:");
+                            double resultDivision = Calculations.Division(divisor, dividend);
+                            Console.WriteLine($"Die Formel für eine Division ist: {divisor} / {dividend}");
+                            Console.WriteLine($"Das Ergebnis ist: {resultDivision}");
+                            break;
+
+                        case 0:
+                            Console.WriteLine("Zurück zum Hauptmenü");
+                            break;
+
+                        default:
+                            Console.WriteLine("Ungültige Eingabe!");
+                            break;
+                    }
+                }
+                catch (FormatException ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                }
+                catch (IOException ex)
+                {
+                    Console.WriteLine(ex.ToString());
                 }
             } while (selectSubMenu != 0);
         }
+
+
         public static double GetNumericInput(string input)
         {
             double value = 0;
             bool checkInput = false;
 
             while (!checkInput)
-            {
-                Console.WriteLine(input);
-                string inputUser = Console.ReadLine();
-                if (double.TryParse(inputUser, out double numericValue))
-                {
-                    value = numericValue;
-                    checkInput = true;
-                }
-                else
-                {
-                    Console.WriteLine("Geben Sie eine gültige numerische Zahl ein:");
-                }
-            }
-            return value;
-        }
-        public static int GetIntInput(string input)
-        {
-            int value = 0;
-            bool checkInput = false;
 
-            while (!checkInput)
             {
-                Console.WriteLine(input);
-                string inputUser = Console.ReadLine();
-                if (int.TryParse(inputUser, out int intValue))
+                try
                 {
-                    value = intValue;
-                    checkInput = true;
+                    Console.WriteLine(input);
+                    string inputUser = Console.ReadLine();
+                    if (double.TryParse(inputUser, out double numericValue))
+                    {
+                        value = numericValue;
+                        checkInput = true;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Geben Sie eine gültige numerische Zahl ein:");
+                    }
+
                 }
-                else
+                catch (Exception ex)
                 {
-                    Console.WriteLine("Geben Sie eine gültige Ganzzahl ein!");
+                    Console.WriteLine(ex.ToString());
                 }
+
             }
             return value;
         }
