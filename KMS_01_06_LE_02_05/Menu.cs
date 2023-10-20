@@ -5,12 +5,9 @@ namespace KMS_01_06_LE_02_04
 {
     public class Menu
     {
-
-        public static void Selects()
+        public static void Selects(double number1)
         {
-
             int select = 0;
-
             do
             {
                 Console.WriteLine("Grundrechnungsarten ( +, - , * , / ): (1): ");
@@ -43,20 +40,20 @@ namespace KMS_01_06_LE_02_04
 
                     case 2:
                         double divisor = GetNumericInput("Geben Sie den Divisor ein:");
-                        double divident = GetNumericInput("Geben Sie den Divident ein:");
-                        double resultModula = Calculations.Division(divisor, divident);
+                        double dividend = GetNumericInput("Geben Sie den Divident ein:");
+                        double resultModulo = Calculations.Modulo(divisor, dividend);
                         Console.WriteLine("Die Formel für eine Moduladivison lt. divisor % divident");
-                        Console.WriteLine($"Das Ergebnis von {divisor} % {divident} = {resultModula}");
+                        Console.WriteLine($"Das Ergebnis von {divisor} % {dividend} = {resultModulo}");
                         break;
                     case 3:
                         double basis = GetNumericInput("Geben Sie die Basis ein:");
-                        double resultPotenz2 = Calculations.Potenz2(basis);
+                        double resultPotenz2 = Calculations.Cubed2(basis);
                         Console.WriteLine("Die Formel für eine Quadrierung lt. basis * basis");
                         Console.WriteLine($"Das Ergebnis von {basis} * {basis} = {resultPotenz2}");
                         break;
                     case 4:
                         double basis1 = GetNumericInput("Geben Sie die Basis ein:");
-                        double resultPotenz3 = Calculations.Potenz3(basis1);
+                        double resultPotenz3 = Calculations.Cubed3(basis1);
                         Console.WriteLine("Die Formel für eine Berechnung Basis hoch 3 lt. basis * basis * basis ");
                         Console.WriteLine($"Das Ergebnis von {basis1} * {basis1} * {basis1} = {resultPotenz3}");
                         break;
@@ -73,7 +70,6 @@ namespace KMS_01_06_LE_02_04
                         Console.WriteLine($"Das Ergebnis von  {n}! = {resultFactorial}");
                         break;
                     case 7:
-   
                         double lengthA = GetNumericInput("Geben Sie die Länge a ein:");
                         double lengthC = GetNumericInput("Geben Sie die Länge c ein:");
                         double height = GetNumericInput("Geben Sie die Höhe ein:");

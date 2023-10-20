@@ -31,7 +31,7 @@ namespace KMS_01_06_LE_02_05
             double result = Math.Round(divisor / divident, 2);
             return result;
         }
-        public static double Modula(double divisor, double divident)
+        public static double Modulo(double divisor, double divident)
         {
             if (divisor == 0)
             {
@@ -41,14 +41,14 @@ namespace KMS_01_06_LE_02_05
             return result;
         }
 
-        public static double Potenz2(double basis)
+        public static double Cubed2(double basis)
         {
             double area = Math.Round((double)Math.Pow(basis, 2), 2);
             return area;
         }
      
         
-        public static double Potenz3(double basis)
+        public static double Cubed3(double basis)
         {
             double volume = Math.Round((double)Math.Pow(basis, 3), 2);
             return volume;
@@ -68,18 +68,18 @@ namespace KMS_01_06_LE_02_05
             }
             return n * Factorial(n - 1);
         }
-        public static double Trapezoid(double lenghtA, double lenghtC, double height)
+        public static double Trapezoid(double lengthA, double lengthC, double height)
         {
 
-            double result = Math.Round(((lenghtA + lenghtC) / 2) * height, 2);
+            double result = Math.Round(((lengthA + lengthC) / 2) * height, 2);
             return result;
         }
 
 
-        public static double Trapezoid(double lenghtA, double lenghtB, double lenghtC, double lenghtD)
+        public static double Trapezoid(double lengthA, double lengthB, double lengthC, double lengthD)
         {
 
-            double result = lenghtA + lenghtB + lenghtC + lenghtD;
+            double result = lengthA + lengthB + lengthC + lengthD;
             return result;
         }
 
