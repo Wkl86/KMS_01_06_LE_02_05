@@ -8,7 +8,7 @@ namespace KMS_01_06_LE_02_05
          * Die Codeverkürzung erfolgte mittels Lamda-Funktion
          */
         public static double Addition(double summand1, double summand2) => summand1 + summand2;
-        public static double Subtraction(double minuend, double subtrahend) => minuend - subtrahend;
+        public static double Subraction(double minuend, double subtrahend) => minuend - subtrahend;
         public static double Multiplication(double factor1, double factor2) => Math.Round(factor1 * factor2, 2);
         public static double Division(double divisor, double divident) => divisor == 0 ? 0 : Math.Round(divisor / divident, 2);
         public static double Modulo(double divisor, double divident) => divisor == 0 ? 0 : Math.Round(divisor % divident, 2);
