@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace KMS_01_06_LE_02_05
 {
     public class SelectInputs
@@ -39,6 +34,6 @@ namespace KMS_01_06_LE_02_05
             }
             return value;
         }
-    }
+    }     
 }
-
+    
