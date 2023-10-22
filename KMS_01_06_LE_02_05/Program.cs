@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,7 +12,8 @@ namespace KMS_01_06_LE_02_05
     {
         static void Main(string[] args)
         {
-            Menu.Selects();
+            Menu menu = new Menu();
+            menu.Selects();
         }
     }
 }
